@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q&A Section</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+    input, button { padding: 0.5rem; margin: 0.5rem 0; }
+    ul { list-style: none; padding: 0; }
+    li { background: white; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .qna-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.qna-box input {
+  width: 60%;
+  max-width: 400px;
+  padding: 10px;
+}
+.qna-box button {
+  padding: 10px 20px;
+  margin-left: 10px;
+}
+
+  </style>
+</head>
+<body><div class="qna-box">
+  <h2>Ask Me Anything</h2>
+  <input type="text" id="question" placeholder="Type your question here...">
+  <button onclick="submitQuestion()">Submit</button>
+  <ul id="questionsList"></ul>
+  <script>
+    function submitQuestion() {
+      const input = document.getElementById('question');
+      const text = input.value.trim();
+      if (text) {
+        const li = document.createElement('li');
+        li.textContent = text;
+        document.getElementById('questionsList').appendChild(li);
+        input.value = '';
+      }
+    }
+  </script>
+  <footer>
+    <a href="index.html">Back to Home</a>
+  </footer></div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .slideshow-container {
+      position: relative;
+      max-width: 600px;
+      margin: auto;
+    }
+    .mySlides {
+      display: none;
+      width: 100%;
+      border-radius: 10px;
+    }
+    .nav-button {
+      cursor: pointer;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #005288;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .nav-button:hover {
+      background-color: #003262;
+    }
+  </style>
+</head>
+<body>
+  <h2>Photo Slideshow</h2>
+  <div class="slideshow-container">
+    <img class="mySlides" src="1.JPG">
+    <img class="mySlides" src="2.JPG">
+    <img class="mySlides" src="3.JPG">
+    <img class="mySlides" src="4.JPG">
+    <img class="mySlides" src="5.JPG">
+    <img class="mySlides" src="6.JPG">
+    <img class="mySlides" src="7.JPG">
+  </div>
+    <div>
+    <button class="nav-button" onclick="plusSlides(-1)">Previous</button>
+    <button class="nav-button" onclick="plusSlides(1)">Next</button>
+  </div>
+  <footer>
+    <a href="index.html"><button> Back to Home </button></a>
+  </footer>
+  <script>
+    let slideIndex = 0;
+    let slides = document.getElementsByClassName("mySlides");
+    let autoSlideInterval;
+
+    function showSlide(n) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex = (n + slides.length) % slides.length;
+      slides[slideIndex].style.display = "block";
+    }
+
+    function plusSlides(n) {
+      clearInterval(autoSlideInterval); // stop auto sliding on manual click
+      showSlide(slideIndex + n);
+      autoSlide(); // restart auto slide
+    }
+
+    function autoSlide() {
+      autoSlideInterval = setInterval(() => {
+        showSlide(slideIndex + 1);
+      }, 3000);
+    }
+
+    // Initialize slideshow
+    showSlide(slideIndex);
+    autoSlide();
+  </script>
+</body>
+</html>
